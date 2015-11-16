@@ -20,7 +20,7 @@ body {
 .headline h1 {
     font-size: 130px;
     color: red;
-    border-radius: 5px;
+    border-radius: 6px;
     background: rgba(211, 211, 211,0.8);
     z-index: -1;
 }
