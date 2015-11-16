@@ -4,7 +4,7 @@ define(function(require) {
   // This function should return a promise
   function() {
     $.ajax({
-      url: "your favorites Firebase URL here",
+      url: "https://carousel-of-love.firebaseio.com/Favorites",
       method: "POST"
     })
     .done(function(response) {
