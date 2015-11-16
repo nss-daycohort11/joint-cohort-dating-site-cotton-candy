@@ -4,14 +4,14 @@ define(function(require) {
   // This function should return a promise
   function() {
     $.ajax({
-      url: "your dating Firebase URL here"
+      url: "https://carousel-of-love.firebaseio.com/Matches",
+      method: "POST"
     })
     .done(function(response) {
       // Resolve the promise
-    }.
-    fail(function(xhr, status, error) {
+    }
+    .fail(function(xhr, status, error) {
       // Reject the promise
     });
-    }
   };
 });
