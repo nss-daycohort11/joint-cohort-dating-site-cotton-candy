@@ -21,6 +21,7 @@ require(
   function(_$_, firebase, auth, profile, login, updateProfile) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
+      var profileExists = false;
       ref.onAuth(function(authThing){
         if (authThing) {
           console.log('authThing', authThing)
@@ -33,17 +34,20 @@ require(
             y.key = key;
             return y;
             });
+            
             for (var i =0; i < userlist.length; i++){
               if (authThing.uid === userlist[i].key) {
                 console.log("Yay!");
+                profileExists = true;
                 // Populate their profile from the data found
-              } else {
-                console.log("You don't exist!");
+              }
+
+              console.log("song", userlist[i].key);
+            }
+              if (profileExists !== true) {
                 profile(authThing, userlist);
                 // if nothing found load create profile page and create a user with that uid
               }
-              console.log("song", userlist[i].key);
-            }
           });
 
         }
