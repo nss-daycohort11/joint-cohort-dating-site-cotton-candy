@@ -10,22 +10,54 @@ require.config({
   },
   shim: {
     "bootstrap": ["jquery"],
-    "firebase": {exports: "Firebase"}
+    "firebase": {
+      exports: "Firebase"
+    }
   }
 });
 
 require(
-  ["dependencies"], 
-  function(_$_) {
+  ["dependencies", "firebase", "auth"], 
+  function(_$_, firebase, auth) {
+      
+      $("#facebookButton").on("click", function() {
+        var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
+        var authData = ref.getAuth();
 
-    /*
-      You can choose to use the REST methods to interact with
-      Firebase, or you can use the Firebase API with event
-      listeners. It's completely up to each team.
+        if (authData === null) {
+          ref.authWithOAuthPopup("facebook", function(error, authData) {
+            if (error) {
+              console.log("Login Failed!", error);
+            } else {
+              console.log("Authenticated successfully with payload:", authData);
+              auth.setUid(authData.uid);
+            }
+          });
+        } else {
+          auth.setUid(authData.uid);
+        }
+        console.log("authData", authData);
+      });
 
-      If you choose the former, I created two boilerplate modules
-      named `potential-mates.js`, and `add-favorite.js`.
-     */
+      $("#twitterButton").on("click", function() {
+        var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
+        var authData = ref.getAuth();
+
+        if (authData === null) {
+          ref.authWithOAuthPopup("twitter", function(error, authData) {
+            if (error) {
+              console.log("Login Failed!", error);
+            } else {
+              console.log("Authenticated successfully with payload:", authData);
+              auth.setUid(authData.uid);
+            }
+          });
+        } else {
+          auth.setUid(authData.uid);
+        }
+        console.log("authData", authData);
+      });
     
-  }
-);
+
+    });
+
