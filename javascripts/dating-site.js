@@ -17,8 +17,8 @@ require.config({
 });
 
 require(
-  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login"], 
-  function(_$_, firebase, auth, profile, login) {
+  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login", "updateProfile"], 
+  function(_$_, firebase, auth, profile, login, updateProfile) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
       ref.onAuth(function(authThing){
@@ -39,7 +39,7 @@ require(
                 // Populate their profile from the data found
               } else {
                 console.log("You don't exist!");
-                profile();
+                profile(authThing, userlist);
                 // if nothing found load create profile page and create a user with that uid
               }
               console.log("song", userlist[i].key);
@@ -53,6 +53,11 @@ require(
       $("#signout").click(function(){
         ref.unauth();
         console.log("You logged out!");
+      });
+
+      $(document).on("click", "#submit-profile", function(){
+        console.log("Almsot ready to submit");
+        updateProfile(authData, userlist);
       });
 
       $(document).on("click", "#facebookButton", function(){
