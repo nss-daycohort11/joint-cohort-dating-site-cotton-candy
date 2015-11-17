@@ -21,29 +21,38 @@ require(
   function(_$_, firebase, auth, profile, login) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
-      ref.getAuth(function(authThing){
-        console.log("You are Authenticated", authThing);
-        ref.once("value", function(snapshot) {
-          var song = snapshot.child("Users").val();
+      ref.onAuth(function(authThing){
+        if (authThing) {
+          console.log('authThing', authThing)
+          console.log("You are Authenticated", authThing);
+          ref.once("value", function(snapshot) {
+            var song = snapshot.child("Users").val();
 
-          userlist = Object.keys(song).map( function( key ){
-          var y = song[ key ];
-          y.key = key;
-          return y;
-          });
-          for (var i =0; i < userlist.length; i++){
-            if (authData.uid === userlist[i].key) {
-              console.log("Yay!");
-              // Populate their profile from the data found
-            } else {
-              console.log("You don't exist!");
-              profile();
-              // if nothing found load create profile page and create a user with that uid
+            userlist = Object.keys(song).map( function( key ){
+            var y = song[ key ];
+            y.key = key;
+            return y;
+            });
+            for (var i =0; i < userlist.length; i++){
+              if (authThing.uid === userlist[i].key) {
+                console.log("Yay!");
+                // Populate their profile from the data found
+              } else {
+                console.log("You don't exist!");
+                profile();
+                // if nothing found load create profile page and create a user with that uid
+              }
+              console.log("song", userlist[i].key);
             }
-            console.log("song", userlist[i].key);
-          }
-        });
+          });
 
+        }
+
+      });
+
+      $("#signout").click(function(){
+        ref.unauth();
+        console.log("You logged out!");
       });
 
       $(document).on("click", "#facebookButton", function(){
