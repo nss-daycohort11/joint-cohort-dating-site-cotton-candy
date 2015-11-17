@@ -17,6 +17,12 @@ body {
     padding: 120px 0;
 }
 
+#sign-in {
+    text-align: right;
+    float: right;
+    margin-left: 350px;     
+}
+
 .headline h1 {
     font-size: 130px;
     color: red;
@@ -44,6 +50,7 @@ body {
 .featurette-image.pull-left {
     margin-right: 40px;
 }
+
 
 .featurette-image.pull-right {
     margin-left: 40px;
