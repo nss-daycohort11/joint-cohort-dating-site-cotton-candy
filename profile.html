@@ -11,8 +11,9 @@
 
 <body>
 	<div class="container-fluid">
+	
     <div class="row">  <!-- HERE IS MY ROW STARTER -->
-			<div id="basic" class="col-sm-6 col-sm-offset-3">
+			<div id="basic" class="col-xs-6 col-xs-offset-3">
 				<label>
 					First Name:
 					<input type="text" name="fname">
@@ -31,8 +32,9 @@
 				</label>
 			</div>
 		</div> <!-- End of row -->
+
 		<div class="row">  <!-- HERE IS MY ROW STARTER -->
-			<div id="profile" class="col-sm-6 col-sm-offset-3">
+			<div id="profile" class="col-xs-6 col-xs-offset-3">
 				<label>
 					About You:
 					<textarea name="profile"></textarea>
@@ -54,6 +56,13 @@
 	      </label>
 			</div>
 		</div> <!-- End of row -->
+
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-5">
+				<button id="update-profile">Update Profile</button>
+			</div>
+		</div>
+
 	</div> <!-- end of container -->
   
   <script data-main="javascripts/dating-site" src="lib/bower_components/requirejs/require.js"></script>
