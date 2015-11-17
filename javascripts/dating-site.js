@@ -17,11 +17,35 @@ require.config({
 });
 
 require(
-  ["dependencies", "firebase", "auth"], 
-  function(_$_, firebase, auth) {
+  ["dependencies", "firebase", "auth", "profile"], 
+  function(_$_, firebase, auth, profile) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
-      
+      ref.onAuth(function(authThing){
+        console.log("You are Authenticated", authThing);
+        ref.once("value", function(snapshot) {
+          var song = snapshot.child("Users").val();
+
+          userlist = Object.keys(song).map( function( key ){
+          var y = song[ key ];
+          y.key = key;
+          return y;
+          });
+          for (var i =0; i < userlist.length; i++){
+            if (authData.uid === userlist[i].key) {
+              console.log("Yay!");
+              // Populate their profile from the data found
+            } else {
+              console.log("You don't exist!");
+              profile();
+              // if nothing found load create profile page and create a user with that uid
+            }
+            console.log("song", userlist[i].key);
+          }
+        });
+
+      });
+
       $("#facebookButton").on("click", function() {
 
         if (authData === null) {
@@ -40,8 +64,6 @@ require(
       });
 
       $("#twitterButton").on("click", function() {
-        // var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
-        // var authData = ref.getAuth();
 
         if (authData === null) {
           ref.authWithOAuthPopup("twitter", function(error, authData) {
@@ -67,6 +89,7 @@ require(
       } else {
         console.log("You're already logged in", authData.facebook.displayName);
         console.log("Your UID is:", authData.uid);
+
       }
     });
 
