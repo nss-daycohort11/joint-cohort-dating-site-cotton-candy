@@ -10,22 +10,91 @@ require.config({
   },
   shim: {
     "bootstrap": ["jquery"],
-    "firebase": {exports: "Firebase"}
+    "firebase": {
+      exports: "Firebase"
+    }
   }
 });
 
 require(
-  ["dependencies"], 
-  function(_$_) {
+  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login"], 
+  function(_$_, firebase, auth, profile, login) {
+      var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
+      var authData = ref.getAuth();
+      ref.onAuth(function(authThing){
+        console.log("You are Authenticated", authThing);
+        ref.once("value", function(snapshot) {
+          var song = snapshot.child("Users").val();
 
-    /*
-      You can choose to use the REST methods to interact with
-      Firebase, or you can use the Firebase API with event
-      listeners. It's completely up to each team.
+          userlist = Object.keys(song).map( function( key ){
+          var y = song[ key ];
+          y.key = key;
+          return y;
+          });
+          for (var i =0; i < userlist.length; i++){
+            if (authData.uid === userlist[i].key) {
+              console.log("Yay!");
+              // Populate their profile from the data found
+            } else {
+              console.log("You don't exist!");
+              profile();
+              // if nothing found load create profile page and create a user with that uid
+            }
+            console.log("song", userlist[i].key);
+          }
+        });
 
-      If you choose the former, I created two boilerplate modules
-      named `potential-mates.js`, and `add-favorite.js`.
-     */
+      });
+
+      $(document).on("click", "#facebookButton", function(){
+        
+        if (authData === null) {
+          ref.authWithOAuthPopup("facebook", function(error, authData) {
+            if (error) {
+              console.log("Login Failed!", error);
+            } else {
+              console.log("Authenticated successfully with payload:", authData);
+              auth.setUid(authData.uid);
+            }
+          });
+        } else {
+          auth.setUid(authData.uid);
+        }
+        console.log("authData", authData);
+      });
+
+      $(document).on("click", "#twitterButton", function(){
+
+        if (authData === null) {
+          ref.authWithOAuthPopup("twitter", function(error, authData) {
+            if (error) {
+              console.log("Login Failed!", error);
+            } else {
+              console.log("Authenticated successfully with payload:", authData);
+              auth.setUid(authData.uid);
+            }
+          });
+        } else {
+          auth.setUid(authData.uid);
+        }
+        console.log("authData", authData);
+      });
     
-  }
-);
+      // Loads modal on page load
+      if (authData === null) {
+      $(document).ready(function(){
+          $('.modal-title').html("<h2>Why Don't You Log In?</h2>");
+          $('.modal-body').html(login());
+          $("#modal-profile-btn").hide();
+          $('#myModal').modal('show');
+          console.log("hello? is it modal you're looking for?");
+        });
+      } else {
+        console.log("You're already logged in", authData.facebook.displayName);
+        console.log("Your UID is:", authData.uid);
+
+      }
+    });
+
+
+
