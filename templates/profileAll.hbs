@@ -1,0 +1,32 @@
+{{#each this}}
+  <div class="container-fluid">
+    <div class="row">
+              <div id="basic" class="col-xs-6 col-xs-offset-3">
+                    <div>
+                          <img src="{{Photo}}">
+                    </div>
+                    <h2>{{FName}}</h2>
+                    <h2>{{LName}}</h2>
+                    <h3>{{Job}}</h3>
+                    <h3>{{Age}}</h3>
+              </div>
+        </div>
+
+        <div class="row">
+              <div id="profile" class="col-xs-6 col-xs-offset-3">
+                    <div>
+                      {{About}}
+                    </div>
+                    <p>Do you enjoy small spaces? {{Spaces}}</p>
+                    <p>Tigers or Lions? {{Animals}}</p>
+                    <p>Do you prefer your juggled items to be on fire? {{Juggle}}</p>
+              </div>
+        </div>
+
+        <div class="row">
+              <div class="col-xs-4 col-xs-offset-4">
+                    <p>{{uid}}</p>
+              </div>
+        </div>
+  </div>
+{{/each}}

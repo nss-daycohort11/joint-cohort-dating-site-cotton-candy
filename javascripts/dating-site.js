@@ -17,8 +17,8 @@ require.config({
 });
 
 require(
-  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login", "updateProfile"], 
-  function(_$_, firebase, auth, profile, login, updateProfile) {
+  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login", "updateProfile", "potentials"], 
+  function(_$_, firebase, auth, profile, login, updateProfile, potentials) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
       var profileExists = false;
@@ -47,6 +47,8 @@ require(
               if (profileExists !== true) {
                 profile(authThing, userlist);
                 // if nothing found load create profile page and create a user with that uid
+              } else {
+                potentials(userlist);
               }
           });
 
