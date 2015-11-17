@@ -2,16 +2,16 @@ define(function(require) {
   var q = require("q");
 
   // This function should return a promise
-  function() {
+  function matchMade() {
     $.ajax({
-      url: "https://carousel-of-love.firebaseio.com/Matches",
-      method: "POST"
-    })
+        url: "https://carousel-of-love.firebaseio.com/Matches",
+        method: "POST"
+      })
     .done(function(response) {
-      // Resolve the promise
-    }
+        // Resolve the promise
+      })
     .fail(function(xhr, status, error) {
-      // Reject the promise
+        // Reject the promise
     });
-  };
+  }
 });
