@@ -19,10 +19,10 @@ require.config({
 require(
   ["dependencies", "firebase", "auth"], 
   function(_$_, firebase, auth) {
+      var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
+      var authData = ref.getAuth();
       
       $("#facebookButton").on("click", function() {
-        var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
-        var authData = ref.getAuth();
 
         if (authData === null) {
           ref.authWithOAuthPopup("facebook", function(error, authData) {
@@ -40,8 +40,8 @@ require(
       });
 
       $("#twitterButton").on("click", function() {
-        var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
-        var authData = ref.getAuth();
+        // var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
+        // var authData = ref.getAuth();
 
         if (authData === null) {
           ref.authWithOAuthPopup("twitter", function(error, authData) {
@@ -59,10 +59,15 @@ require(
       });
     
       // Loads modal on page load
+      if (authData === null) {
       $(document).ready(function(){
           $('#myModal').modal('show');
           console.log("hello? is it modal you're looking for?");
         });
+      } else {
+        console.log("You're already logged in", authData.facebook.displayName);
+        console.log("Your UID is:", authData.uid);
+      }
     });
 
 
