@@ -58,6 +58,12 @@ require(
         console.log("authData", authData);
       });
     
-
+      // Loads modal on page load
+      $(document).ready(function(){
+          $('#myModal').modal('show');
+          console.log("hello? is it modal you're looking for?");
+        });
     });
+
+
 
