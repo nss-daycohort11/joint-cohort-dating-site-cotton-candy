@@ -4,8 +4,11 @@ define(function(require) {
 
   // This function should return a promise
   function updateDatProfile(you, them) {
+    var uidURL = you.uid;
+    var updateProfileRef = new Firebase('https://carousel-of-love.firebaseio.com/Users/'+uidURL+'/');
 
-    var newYou = {
+
+    updateProfileRef.set({
       "About" : $("textarea[name='profile']").val(),
       "Age" : $("input[name='age']").val(),
       "Animals" : $("input[name='animals']").val(),
@@ -17,21 +20,9 @@ define(function(require) {
       "Matches" : "",
       "Photo" : "",
       "Spaces" : $("input[name='small-space']").val(),
-      "uid": you.uid
-    }
-
-    $.ajax({
-        url: "https://carousel-of-love.firebaseio.com/Users.json",
-        method: "POST",
-        data: JSON.stringify(newYou)
-      })
-    .done(function(response) {
-        // Resolve the promise
-        console.log("user profile posted");
-      })
-    .fail(function(xhr, status, error) {
-        // Reject the promise
+      "uid": uidURL
     });
+    
   }
   return updateDatProfile
 });
