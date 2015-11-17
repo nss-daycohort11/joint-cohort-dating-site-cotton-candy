@@ -21,7 +21,7 @@ require(
   function(_$_, firebase, auth, profile, login) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
-      ref.onAuth(function(authThing){
+      ref.getAuth(function(authThing){
         console.log("You are Authenticated", authThing);
         ref.once("value", function(snapshot) {
           var song = snapshot.child("Users").val();
