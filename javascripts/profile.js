@@ -5,8 +5,8 @@ define(function(require) {
 
   function createNewProfile(newUser, oldUsers) {
     $('.modal-title').html("<h2>Fill Out Your Profile</h2>");
-    $('.modal-body').html(newProfile());
     $("#modal-login-btn").hide();
+    $('.modal-body').html(newProfile());
     $('#myModal').modal('show');
 
   }

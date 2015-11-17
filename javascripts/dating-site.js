@@ -93,8 +93,8 @@ require(
       if (authData === null) {
       $(document).ready(function(){
           $('.modal-title').html("<h2>Why Don't You Log In?</h2>");
-          $('.modal-body').html(login());
           $("#modal-profile-btn").hide();
+          $('.modal-body').html(login());
           $('#myModal').modal('show');
           console.log("hello? is it modal you're looking for?");
         });
