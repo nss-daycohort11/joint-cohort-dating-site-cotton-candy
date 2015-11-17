@@ -1,114 +1,125 @@
 <!doctype html>
-
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Joint team project - Dating site</title>
-
-  <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="styles/main.css">
-  <link rel="stylesheet" href="styles/splash.css"
-
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <head>
+        <meta charset="utf-8">
+        <title>Carnival of Love</title>
+        <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
+        <link rel="stylesheet" href="styles/splash.css">
+    </head>
+    <body>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Why Don't You Log In?</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-profile-btn">Submit Profile</button>
+                        <button type="button" class="btn btn-primary" id="modal-login-btn">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Carousel of Love</a>
+                    </button>
+                    <a class="navbar-brand" href="#home">Carousel of Love</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#profile">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#matches">Matches</a>
+                        </li>
+                        <li>
+                            <a href="#likes">Like</a>
+                        </li>
+                        <li>
+                            <a href="#" id="signout">Sign-Out</a>
+                        </li>
+                        <li id="sign-in">
+                            <a href="#" id="sign-in">Sign-in</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#Profile">Profile</a>
-                    </li>
-                    <li>
-                        <a href="#Matches">Matches</a>
-                    </li>
-                    <li>
-                        <a href="#Like">Like</a>
-                    </li>
-                    <li id="sign-in">
-                        <a href="#" id="sign-in">Sign-in</a>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Full Width Image Header -->
-    <header class="header-image">
-        <div class="headline">
-            <div class="container">
-                <h1>Carousel Of Love</h1>
-                <h2>For Carnies By Carnies</h2>
-            </div>
-        </div>
-    </header>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <hr class="featurette-divider">
-
-        <!-- First Featurette -->
-        <div class="featurette" id="Profile">
-            <img class="featurette-image img-responsive pull-left" src="http://placehold.it/400x300">
-            <h2 class="featurette-heading">Profile
-            </h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- Second Featurette -->
-        <div class="featurette" id="Matches">
-            <img class="featurette-image img-circle img-responsive pull-left" src="http://placehold.it/250x250">
-            <h2 class="featurette-heading">Matches
-                
-            </h2>
-            
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- Third Featurette -->
-        <div class="featurette" id="Like">
-            <img class="featurette-image img-circle img-responsive pull-left" src="http://placehold.it/250x250">
-            <h2 class="featurette-heading">Likes
-            </h2>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Austin fucking Scott</p>
+            <!-- /.container -->
+        </nav>
+        <!-- Full Width Image Header -->
+        <header class="header-image">
+            <div class="headline">
+                <div class="container">
+                    <h1>Carousel Of Love</h1>
+                    <h2>For Carnies By Carnies</h2>
                 </div>
             </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
-  
-
-<script data-main="javascripts/dating-site" src="lib/bower_components/requirejs/require.js"></script>
-
-</body>
-</html>
+        </header>
+        <!-- Page Content -->
+        <div class="container">
+            <hr class="featurette-divider">
+            <!-- First Featurette -->
+            <div class="featurette" id="Profile">
+                <img class="featurette-image img-responsive pull-left" src="http://placehold.it/400x300">
+                <h2 class="featurette-heading">Profile
+                </h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <!-- THIS IS THE PROFILE PAGE -->
+            <div id="#profile">
+            </div>
+            <!-- Second Featurette -->
+            <hr class="featurette-divider">
+            <div class="featurette" id="Matches">
+                <img class="featurette-image img-circle img-responsive pull-left" src="http://placehold.it/250x250">
+                <h2 class="featurette-heading">Matches
+                
+                </h2>
+                
+            </div>
+            <!-- THIS IS THE MATCHES PAGE -->
+            <div id="#matches">
+                
+            </div>
+            <!-- Third Featurette -->
+            <hr class="featurette-divider">
+            <div class="featurette" id="Like">
+                <img class="featurette-image img-circle img-responsive pull-left" src="http://placehold.it/250x250">
+                <h2 class="featurette-heading">Likes
+                </h2>
+            </div>
+            <!-- THIS IS THE LIKES PAGE -->
+            <div id="#likes">
+                
+            </div>
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr class="featurette-divider">
+                        <p>Copyright &copy; Austin fucking Scott</p>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer -->
+            
+            <script data-main="javascripts/dating-site" src="lib/bower_components/requirejs/require.js"></script>
+        </body>
+    </html>
