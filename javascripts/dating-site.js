@@ -17,8 +17,8 @@ require.config({
 });
 
 require(
-  ["dependencies", "firebase", "auth", "profile"], 
-  function(_$_, firebase, auth, profile) {
+  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login"], 
+  function(_$_, firebase, auth, profile, login) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
       ref.onAuth(function(authThing){
@@ -46,8 +46,8 @@ require(
 
       });
 
-      $("#facebookButton").on("click", function() {
-
+      $(document).on("click", "#facebookButton", function(){
+        
         if (authData === null) {
           ref.authWithOAuthPopup("facebook", function(error, authData) {
             if (error) {
@@ -63,7 +63,7 @@ require(
         console.log("authData", authData);
       });
 
-      $("#twitterButton").on("click", function() {
+      $(document).on("click", "#twitterButton", function(){
 
         if (authData === null) {
           ref.authWithOAuthPopup("twitter", function(error, authData) {
@@ -83,6 +83,9 @@ require(
       // Loads modal on page load
       if (authData === null) {
       $(document).ready(function(){
+          $('.modal-title').html("<h2>Why Don't You Log In?</h2>");
+          $('.modal-body').html(login());
+          $("#modal-profile-btn").hide();
           $('#myModal').modal('show');
           console.log("hello? is it modal you're looking for?");
         });

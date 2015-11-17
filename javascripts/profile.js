@@ -1,12 +1,12 @@
 define(function(require) {
   var q = require("q");
   var _$_ = require("dependencies");
+  var newProfile = require("hbs!../templates/signUpProfile")
 
   function createNewProfile(newUser, oldUsers) {
-    require(['hbs!../templates/signUpProfile'], function(newProfile) {
-      $('.modal-title').html("<h2>Fill Out Your Profile</h2>")
-      $('.modal-body').html(newProfile())
-      });
+    $('.modal-title').html("<h2>Fill Out Your Profile</h2>");
+    $('.modal-body').html(newProfile());
+    $("#modal-login-btn").hide();
     $('#myModal').modal('show');
 
   }
