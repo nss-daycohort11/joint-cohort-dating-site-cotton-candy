@@ -17,8 +17,8 @@ require.config({
 });
 
 require(
-  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login", "updateProfile", "potentials"], 
-  function(_$_, firebase, auth, profile, login, updateProfile, potentials) {
+  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login", "updateProfile", "potentials", "favorites"], 
+  function(_$_, firebase, auth, profile, login, updateProfile, potentials, favorites) {
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
       var profileExists = false;
@@ -62,8 +62,14 @@ require(
       });
 
       $(document).on("click", "#submit-profile", function(){
-        console.log("Almsot ready to submit");
+        console.log("Almost ready to submit");
         updateProfile(authData, userlist);
+      });
+
+      $(document).on("click", ".like-profile", function(){
+        var faveKey = $(this).attr('uid');
+        console.log("faveKey", faveKey);
+        favorites(faveKey, authData);
       });
 
       $(document).on("click", "#facebookButton", function(){
