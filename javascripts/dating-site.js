@@ -48,7 +48,7 @@ require(
                 profile(authThing, userlist);
                 // if nothing found load create profile page and create a user with that uid
               } else {
-                potentials(userlist);
+                potentials(userlist, authThing.uid);
               }
           });
 
