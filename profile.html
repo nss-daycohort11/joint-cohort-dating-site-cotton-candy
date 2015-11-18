@@ -12,19 +12,21 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-              <div id="basic" class="col-xs-6 col-xs-offset-3">
-                    <div>
-                          <img src="{{Photo}}">
-                    </div>
+    					<div class="col-xs-2 col-xs-offset-1">
+                <img src="{{Photo}}">
+              </div>
+              <div id="basic" class="col-xs-6">
+                    
                     <h2>First Name: {{FName}}</h2>
                     <h2>Last Name: {{LName}}</h2>
                     <h3>Job: {{Job}}</h3>
                     <h3>Age: {{Age}}</h3>
+                    <button class="edit-profile btn btn-default" uid="{{uid}}">Edit Profile</button>
               </div>
         </div>
 
         <div class="row">
-              <div id="profile" class="col-xs-6 col-xs-offset-3">
+              <div id="profile" class="col-xs-9 col-xs-offset-1">
                     <div>
                       About me:
                       {{About}}
@@ -32,12 +34,6 @@
                     <p>Do you enjoy small spaces? {{Spaces}}</p>
                     <p>Tigers or Lions? {{Animals}}</p>
                     <p>Do you prefer your juggled items to be on fire? {{Juggle}}</p>
-              </div>
-        </div>
-
-        <div class="row">
-              <div class="col-xs-4 col-xs-offset-4">
-                    <button class="like-profile btn btn-default" uid="{{uid}}">Like This Person</button>
               </div>
         </div>
   </div> <!-- end of container -->
