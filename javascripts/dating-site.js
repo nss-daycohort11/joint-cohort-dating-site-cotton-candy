@@ -63,6 +63,7 @@ require(
 
       $(document).on("click", "#submit-profile", function(){
         console.log("Almost ready to submit");
+        console.log(authData);
         updateProfile(authData, userlist);
       });
 
@@ -116,7 +117,6 @@ require(
           console.log("hello? is it modal you're looking for?");
         });
       } else {
-        console.log("You're already logged in", authData.facebook.displayName);
         console.log("Your UID is:", authData.uid);
 
       }
