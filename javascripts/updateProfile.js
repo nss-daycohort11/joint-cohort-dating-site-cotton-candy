@@ -18,7 +18,7 @@ define(function(require) {
       "LName" : $("input[name='lname']").val(),
       "Likes" : "",
       "Matches" : "",
-      "Photo" : "",
+      "Photo" : $("input[name='Photo']").val(),
       "Spaces" : $("input[name='small-space']").val(),
       "uid": uidURL
     });
