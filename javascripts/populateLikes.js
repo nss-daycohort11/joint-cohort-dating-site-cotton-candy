@@ -11,7 +11,18 @@ define(function(require) {
         url: "https://carousel-of-love.firebaseio.com/Favorites.json",
       }).done(function(data) {
         console.log("Your added like is:", data);
-        $("#likes").html("<p>"+data+"</p>");
+
+        likeList = Object.keys(data).map( function( key ){
+            var y = data[ key ];
+            y.key = key;
+            return y;
+            });
+        console.log("data length", likeList);
+        for (var i = 0 ; i < likeList.length; i++) {
+          var display = likeList[i];
+          console.log("DISPLAY", display);
+          $("#likes").append("<p>"+display+"</p>");
+        };
         deferred.resolve(data); //If call successful resolve promise with the data
       })
       .fail(function(xhr, status, error) {
