@@ -1,6 +1,7 @@
 define(function(require) {
   var _$_ = require("dependencies");
   var Q = require("q");
+  var populateLikes = require("populateLikes");
 
   // This function should return a promise
   var deferLike = Q.defer();
@@ -18,6 +19,7 @@ define(function(require) {
         data: JSON.stringify(faves)
       }).done(function(addedLike) {
         console.log("Your added like is:", addedLike);
+        populateLikes();
         deferLike.resolve(addedLike); //If call successful resolve promise with the data
       })
       .fail(function(xhr, status, error) {
