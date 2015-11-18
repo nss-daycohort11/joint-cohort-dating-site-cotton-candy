@@ -8,4 +8,9 @@ h1 {
 .img-inline {
   display: inline-block; }
 
+ div.row {
+ 	text-align: left;
+ }
+
+
 /*# sourceMappingURL=main.css.map */

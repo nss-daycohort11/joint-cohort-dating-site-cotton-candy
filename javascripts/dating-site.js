@@ -17,13 +17,63 @@ require.config({
 });
 
 require(
-  ["dependencies", "firebase", "auth"], 
-  function(_$_, firebase, auth) {
-      
-      $("#facebookButton").on("click", function() {
-        var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
-        var authData = ref.getAuth();
+  ["dependencies", "firebase", "auth", "profile", "hbs!../templates/login", "updateProfile", "potentials", "favorites"], 
+  function(_$_, firebase, auth, profile, login, updateProfile, potentials, favorites) {
+      var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
+      var authData = ref.getAuth();
+      var profileExists = false;
+      ref.onAuth(function(authThing){
+        if (authThing) {
+          console.log('authThing', authThing)
+          console.log("You are Authenticated", authThing);
+          ref.once("value", function(snapshot) {
+            var song = snapshot.child("Users").val();
 
+            userlist = Object.keys(song).map( function( key ){
+            var y = song[ key ];
+            y.key = key;
+            return y;
+            });
+            
+            for (var i =0; i < userlist.length; i++){
+              if (authThing.uid === userlist[i].key) {
+                console.log("Yay!");
+                profileExists = true;
+                // Populate their profile from the data found
+              }
+
+              console.log("song", userlist[i].key);
+            }
+              if (profileExists !== true) {
+                profile(authThing, userlist);
+                // if nothing found load create profile page and create a user with that uid
+              } else {
+                potentials(userlist);
+              }
+          });
+
+        }
+
+      });
+
+      $("#signout").click(function(){
+        ref.unauth();
+        console.log("You logged out!");
+      });
+
+      $(document).on("click", "#submit-profile", function(){
+        console.log("Almost ready to submit");
+        updateProfile(authData, userlist);
+      });
+
+      $(document).on("click", ".like-profile", function(){
+        var faveKey = $(this).attr('uid');
+        console.log("faveKey", faveKey);
+        favorites(faveKey, authData);
+      });
+
+      $(document).on("click", "#facebookButton", function(){
+        
         if (authData === null) {
           ref.authWithOAuthPopup("facebook", function(error, authData) {
             if (error) {
@@ -39,9 +89,7 @@ require(
         console.log("authData", authData);
       });
 
-      $("#twitterButton").on("click", function() {
-        var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
-        var authData = ref.getAuth();
+      $(document).on("click", "#twitterButton", function(){
 
         if (authData === null) {
           ref.authWithOAuthPopup("twitter", function(error, authData) {
@@ -58,6 +106,21 @@ require(
         console.log("authData", authData);
       });
     
+      // Loads modal on page load
+      if (authData === null) {
+      $(document).ready(function(){
+          $('.modal-title').html("<h2>Why Don't You Log In?</h2>");
+          $("#modal-profile-btn").hide();
+          $('.modal-body').html(login());
+          $('#myModal').modal('show');
+          console.log("hello? is it modal you're looking for?");
+        });
+      } else {
+        console.log("You're already logged in", authData.facebook.displayName);
+        console.log("Your UID is:", authData.uid);
 
+      }
     });
+
+
 
