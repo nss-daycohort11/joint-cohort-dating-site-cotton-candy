@@ -5,7 +5,6 @@
         <title>Carnival of Love</title>
         <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="styles/main.css">
-        <link rel="stylesheet" href="styles/splash.css">
     </head>
     <body>
         <!-- Modal -->
@@ -37,19 +36,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#home">Carousel of Love</a>
+                    <a href="#" class="home">Carnival of Love</a>
                 </div>
+                
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#profile">Profile</a>
+                            <a href="#profile" class="profile">Profile</a>
                         </li>
                         <li>
-                            <a href="#matches">Matches</a>
+                            <a href="#matches" class="matches">Matches</a>
                         </li>
                         <li>
-                            <a href="#likes">Like</a>
+                            <a href="#likes" class="likes">Like</a>
+                        </li>
+
+                        <li>
+                            <a href="#carousel" class="carousel">Carousel</a>
                         </li>
                         <li>
                             <a href="#" id="signout">Sign-Out</a>
@@ -60,54 +64,36 @@
             </div>
             <!-- /.container -->
         </nav>
-        <!-- Full Width Image Header -->
-        <header class="header-image">
-            <div class="headline">
-                <div class="container">
-                    <h1>Carousel Of Love</h1>
-                    <h2>For Carnies By Carnies</h2>
-                </div>
-            </div>
-        </header>
-        <!-- Page Content -->
-        <div class="container">
-            <hr class="featurette-divider">
-            <!-- First Featurette -->
-            <div class="featurette" id="Profile">
+        <!-- THIS IS THE HOME PAGE -->
+        <div id="home">
+            <h1>Carnival Of Love</h1>
+            <h2>For Carnies By Carnies</h2>
+            <img src="images/carnivalOfLove.gif">
+        </div>
+
+            
+            <!-- THIS IS THE PROFILE PAGE -->
+            <div id="profile" class="hide">
                 <img id="profile-pic" class="featurette-image img-responsive pull-left" src="http://lorempixel.com/400/300/people" width="400" height="300">
                 <h2 class="featurette-heading">Profile
                 </h2>
                 <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             </div>
-            <!-- THIS IS THE PROFILE PAGE -->
-            <div id="profile">
-            </div>
-            <!-- Second Featurette -->
-            <hr class="featurette-divider">
-            <div class="featurette" id="Matches">
-                <h2 class="featurette-heading">Matches
-                
-                </h2>
-                
-            </div>
+            
+            
             <!-- THIS IS THE MATCHES PAGE -->
-            <div id="matches">
-                
-            </div>
-            <!-- Third Featurette -->
-            <hr class="featurette-divider">
-            <div class="featurette" id="Like">
-                <h2 class="featurette-heading">Likes
-                </h2>
-            </div>
-            <!-- THIS IS THE LIKES PAGE -->
-            <div id="likes">
-                
+            <div id="matches" class="hide">
+                <h1>THIS IS THE MATCHES PAGE</h1>
             </div>
 
-            <!-- THIS IS THE CAROUSEL PAGE -->
-            <div id="carousel">
-                
+            <!-- THIS IS THE LIKES PAGE -->
+            <div id="likes" class="hide">
+                <h1>THIS IS THE LIKES PAGE</h1>
+            </div>
+
+            <!-- THIS IS THE Carnival PAGE -->
+            <div id="carousel" class="hide">
+                <h1>THIS IS THE CAROUSEL PAGE</h1>
             </div>
             <!-- Footer -->
             <footer>

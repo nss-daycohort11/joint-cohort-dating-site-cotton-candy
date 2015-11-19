@@ -1,16 +1,12 @@
-body {
-  background-color: pink; }
 
 h1 {
-  text-align: center;
-  color: purple; }
+	margin-top: 60px;
+}
 
-.img-inline {
-  display: inline-block; }
+.hide {
+	visibility: none;
+}
 
- div.row {
- 	text-align: left;
- }
-
-
-/*# sourceMappingURL=main.css.map */
+#home {
+	text-align: center;
+}

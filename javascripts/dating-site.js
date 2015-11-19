@@ -120,7 +120,58 @@ require(
         console.log("Your UID is:", authData.uid);
 
       }
+
+
+      // CLICK FUNCTION TO CHANGE "CARDS"
+
+      $("body").on("click", ".home", function() {
+        $("#home").show();
+        $("#matches").hide();
+        $("#likes").hide();
+        $("#carousel").hide();
+        $("#profile").hide();
+      });
+
+      $("body").on("click", ".profile", function() {
+        $("#profile").removeClass("hide");
+        $("#profile").show();
+        $("#home").hide();
+        $("#matches").hide();
+        $("#likes").hide();
+        $("#carousel").hide();
+      });
+
+      $("body").on("click", ".likes", function() {
+        $("#likes").removeClass("hide");
+        $("#likes").show();
+        $("#matches").hide();
+        $("#profile").hide();
+        $("#carousel").hide();
+        $("#home").hide();
+      });
+
+      $("body").on("click", ".carousel", function() {
+        $("#carousel").removeClass("hide");
+        $("#carousel").show();
+        $("#likes").hide();
+        $("#profile").hide();
+        $("#matches").hide();
+        $("#home").hide();
+      });
+      
+      $("body").on("click", ".matches", function() {
+        $("#matches").removeClass("hide");
+        $("#matches").show();
+        $("#likes").hide();
+        $("#profile").hide();
+        $("#carousel").hide();
+        $("#home").hide();
+      });
+
+
     });
+
+      
 
 
 
