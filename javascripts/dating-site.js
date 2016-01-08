@@ -22,6 +22,8 @@ require(
       var ref = new Firebase("https://carousel-of-love.firebaseio.com/");
       var authData = ref.getAuth();
       var profileExists = false;
+
+      //Once the auth changes attempt to gather data based on who is logged in
       ref.onAuth(function(authThing){
         if (authThing) {
           console.log('authThing', authThing)
@@ -29,6 +31,7 @@ require(
           ref.once("value", function(snapshot) {
             var song = snapshot.child("Users").val();
 
+            //Create an array (userlist) out of the object (song)
             userlist = Object.keys(song).map( function( key ){
             var y = song[ key ];
             y.key = key;
@@ -56,23 +59,27 @@ require(
 
       });
 
+      //This logs out the user when the signout button is clicked
       $("#signout").click(function(){
         ref.unauth();
         console.log("You logged out!");
       });
 
+      //This sends the user data to be submitted when the submit-profile button is clicked
       $(document).on("click", "#submit-profile", function(){
         console.log("Almost ready to submit");
         console.log(authData);
         updateProfile(authData, userlist);
       });
 
+      //This sends the user data to be submitted when the like-profile button is clicked
       $(document).on("click", ".like-profile", function(){
         var faveKey = $(this).attr('uid');
         console.log("faveKey", faveKey);
         favorites(faveKey, authData);
       });
 
+      //This will log in with Facebook on click!
       $(document).on("click", "#facebookButton", function(){
         
         if (authData === null) {
@@ -90,6 +97,7 @@ require(
         console.log("authData", authData);
       });
 
+      //This will log in with Twitter on click!
       $(document).on("click", "#twitterButton", function(){
 
         if (authData === null) {

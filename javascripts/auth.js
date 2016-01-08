@@ -1,5 +1,6 @@
 define(function(require) {
   var uid = null;
+  // Get and Set the UID
   return {
     getUid: function() {
       console.log("returning", uid);

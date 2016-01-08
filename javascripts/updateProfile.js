@@ -7,7 +7,7 @@ define(function(require) {
     var uidURL = you.uid;
     var updateProfileRef = new Firebase('https://carousel-of-love.firebaseio.com/Users/'+uidURL+'/');
 
-
+    // Update the profile with all the values from the input fields
     updateProfileRef.set({
       "About" : $("textarea[name='profile']").val(),
       "Age" : $("input[name='age']").val(),
